@@ -23,9 +23,9 @@ jobs:
         source: ./
         target: ./
 
-     - name: Copy files to /var/www/html
-       uses: appleboy/scp-action@v1
-       with:
+    - name: Copy files to /var/www/html
+      uses: appleboy/ssh-action@v1
+      with:
          host: ${{ secrets.EC2_HOST }}
          username: ${{ secrets.EC2_USERNAME }}
          key: ${{ secrets.EC2_SSH_KEY }}
@@ -36,3 +36,4 @@ jobs:
            pwd
            sudo cp -r * /var/www/html
            sudo systemctl restart nginx
+
